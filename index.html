@@ -44,8 +44,9 @@
         }
         #parentLoginBtn {
             position: absolute;
-            top: 20px; /* Aangepaste positie bovenaan */
-            right: 20px; /* Aangepaste positie rechts */
+            bottom: -30px; /* Aangepaste positie onder de border */
+            left: 50%; /* Gecentreerd onder de border */
+            transform: translateX(-50%);
             background-color: #ffc107; /* Gele kleur */
             border-color: #ffc107;
             color: #000; /* Zwarte tekstkleur */
@@ -63,9 +64,6 @@
 <body>
     <div class="stars"></div> <!-- Meer sterren toegevoegd -->
     <div class="container mt-5 animated fadeIn">
-        <!-- Toegevoegde knop voor ouderlogin -->
-        <a href="admin_dashboard.html" class="btn btn-warning" id="parentLoginBtn">Ouder Login</a>
-
         <h1 class="text-center">Welkom op het Kinderslaapavontuur</h1>
         
         <div class="row mt-5">
@@ -78,6 +76,9 @@
                 <p id="nextSleep">Spannend!</p>
             </div>
         </div>
+
+        <!-- Toegevoegde knop voor ouderlogin -->
+        <a href="admin_dashboard.html" class="btn btn-warning" id="parentLoginBtn">Ouder Login</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
