@@ -67,15 +67,32 @@
             localStorage.setItem("lastSleep", lastSleep);
             localStorage.setItem("nextSleep", nextSleep);
 
-            // Opgeslagen gegevens ook naar GitHub-bestand sturen
-            updateGitHubFile(lastSleep, nextSleep);
+            // Opgeslagen gegevens ook naar Storage.html schrijven
+            saveToFile(lastSleep, nextSleep);
 
             // Terug naar kinderpagina
             window.location.href = "index.html";
         }
 
-        function updateGitHubFile(lastSleep, nextSleep) {
-            // Voeg hier de code toe om het GitHub-bestand bij te werken
+        function saveToFile(lastSleep, nextSleep) {
+            var dataToSave = JSON.stringify({ lastSleep: lastSleep, nextSleep: nextSleep });
+
+            // Maak een Blob aan met de gegevens
+            var blob = new Blob([dataToSave], { type: 'text/plain' });
+
+            // Creëer een object URL voor de Blob
+            var url = URL.createObjectURL(blob);
+
+            // Maak een nieuwe link aan
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'Storage.html';
+
+            // Simuleer een klik op de link om het bestand op te slaan
+            a.click();
+
+            // Verwijder de object URL om geheugenlekken te voorkomen
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>
