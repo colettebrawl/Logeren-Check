@@ -23,6 +23,15 @@
             height: 100%;
             background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat top center;
             z-index: 1;
+            animation: stars 20s linear infinite; /* Animatie voor de sterren */
+        }
+        @keyframes stars {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 100%;
+            }
         }
         .container {
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte container */
@@ -53,7 +62,7 @@
     </style>
 </head>
 <body>
-    <div class="stars"></div> <!-- Sterren toegevoegd -->
+    <div class="stars"></div> <!-- Meer sterren toegevoegd -->
     <div class="container mt-5 animated fadeIn">
         <!-- Toegevoegde knop voor ouderlogin -->
         <a href="admin_dashboard.html" class="btn btn-warning" id="parentLoginBtn">Ouder Login</a>
