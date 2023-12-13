@@ -67,7 +67,7 @@
             localStorage.setItem("lastSleep", lastSleep);
             localStorage.setItem("nextSleep", nextSleep);
 
-            // Opgeslagen gegevens ook naar Storage.html schrijven
+            // Opgeslagen gegevens ook naar GitHub-bestand sturen
             saveToFile(lastSleep, nextSleep);
 
             // Terug naar kinderpagina
@@ -75,24 +75,41 @@
         }
 
         function saveToFile(lastSleep, nextSleep) {
-            var dataToSave = JSON.stringify({ lastSleep: lastSleep, nextSleep: nextSleep });
+            var accessToken = 'YOUR_GITHUB_TOKEN';
+            var repoOwner = 'GEBRUIKERSNAAM';
+            var repoName = 'REPO_NAAM';
+            var filePath = 'path/naar/jouw/Storage.html';
 
-            // Maak een Blob aan met de gegevens
-            var blob = new Blob([dataToSave], { type: 'text/plain' });
+            // Haal huidige inhoud van het bestand op
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Bewerk de inhoud van het bestand
+                var content = JSON.parse(atob(data.content));
+                content.lastSleep = lastSleep;
+                content.nextSleep = nextSleep;
 
-            // Creëer een object URL voor de Blob
-            var url = URL.createObjectURL(blob);
-
-            // Maak een nieuwe link aan
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = 'Storage.html';
-
-            // Simuleer een klik op de link om het bestand op te slaan
-            a.click();
-
-            // Verwijder de object URL om geheugenlekken te voorkomen
-            URL.revokeObjectURL(url);
+                // Werk het bestand bij
+                return fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'Update sleep data',
+                        content: btoa(JSON.stringify(content)),
+                        sha: data.sha
+                    })
+                });
+            })
+            .then(response => response.json())
+            .then(data => console.log('Bestand bijgewerkt:', data))
+            .catch(error => console.error('Fout bijwerken bestand:', error));
         }
     </script>
 </body>
