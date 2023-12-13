@@ -20,27 +20,34 @@
     </style>
 </head>
 <body class="container mt-5 animated fadeIn">
-    <h1 class="text-center">Ouderinlog</h1>
-    <form class="mt-5">
-        <div class="form-group">
-            <label for="username">Gebruikersnaam:</label>
-            <input type="text" class="form-control" id="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Wachtwoord:</label>
-            <input type="password" class="form-control" id="password" required>
-        </div>
-        <!-- Toegevoegde invoervelden -->
-        <div class="form-group">
-            <label for="lastSleepInput">Laatst geslapen:</label>
-            <input type="text" class="form-control" id="lastSleepInput" placeholder="Vul in...">
-        </div>
-        <div class="form-group">
-            <label for="nextSleepInput">Volgende keer slapen:</label>
-            <input type="text" class="form-control" id="nextSleepInput" placeholder="Vul in...">
-        </div>
-        <button type="button" class="btn btn-primary btn-block animated pulse" onclick="checkLogin()">Inloggen</button>
-    </form>
+    <div id="loginForm">
+        <h1 class="text-center">Ouderinlog</h1>
+        <form class="mt-5">
+            <div class="form-group">
+                <label for="username">Gebruikersnaam:</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Wachtwoord:</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="button" class="btn btn-primary btn-block animated pulse" onclick="checkLogin()">Inloggen</button>
+        </form>
+    </div>
+
+    <div id="dataForm" style="display: none;">
+        <form>
+            <div class="form-group">
+                <label for="lastSleepInput">Laatst geslapen:</label>
+                <input type="text" class="form-control" id="lastSleepInput" placeholder="Vul in...">
+            </div>
+            <div class="form-group">
+                <label for="nextSleepInput">Volgende keer slapen:</label>
+                <input type="text" class="form-control" id="nextSleepInput" placeholder="Vul in...">
+            </div>
+            <button type="button" class="btn btn-primary btn-block animated pulse" onclick="saveData()">Opslaan</button>
+        </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -75,7 +82,7 @@
         }
 
         function saveToFile(lastSleep, nextSleep) {
-            var accessToken = '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;
+            var accessToken = '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';
             var repoOwner = 'colettebrawl'; // Jouw GitHub-gebruikersnaam
             var repoName = 'Logeren-Check'; // Naam van je repository
             var filePath = 'Storage.html'; // Het pad naar het bestand in je repository
