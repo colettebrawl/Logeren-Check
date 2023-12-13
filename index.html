@@ -6,16 +6,33 @@
     <title>Kinderslaapavontuur</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #9ad3bc; /* Zachte groene kleur */
+            background-color: #000; /* Zwarte achtergrond */
+            font-family: 'Roboto', sans-serif;
+            color: #fff; /* Witte tekstkleur */
+            position: relative;
+            overflow: hidden;
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat top center;
+            z-index: 1;
         }
         .container {
-            background-color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparante zwarte container */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Witte shadow */
             margin-top: 50px;
+            border: 2px solid #fff; /* Witte border */
+            position: relative;
+            z-index: 2;
         }
         #parentLoginBtn {
             position: absolute;
@@ -23,32 +40,35 @@
             left: 10px;
             background-color: #ffc107; /* Gele kleur */
             border-color: #ffc107;
+            color: #000; /* Zwarte tekstkleur */
+            z-index: 3;
         }
-        h1 {
-            color: #3f704d; /* Donkergroene tekstkleur */
+        h1, h2, p {
+            color: #fff; /* Witte tekstkleur */
         }
         h2 {
-            color: #3f704d; /* Donkergroene tekstkleur */
-        }
-        p {
-            color: #6d757c; /* Grijsblauwe tekstkleur */
+            border-bottom: 2px solid #fff; /* Witte onderlijn */
+            padding-bottom: 5px;
         }
     </style>
 </head>
-<body class="container mt-5 animated fadeIn">
-    <!-- Toegevoegde knop voor ouderlogin -->
-    <a href="admin_dashboard.html" class="btn btn-warning" id="parentLoginBtn">Ouder Login</a>
+<body>
+    <div class="stars"></div> <!-- Sterren toegevoegd -->
+    <div class="container mt-5 animated fadeIn">
+        <!-- Toegevoegde knop voor ouderlogin -->
+        <a href="admin_dashboard.html" class="btn btn-warning" id="parentLoginBtn">Ouder Login</a>
 
-    <h1 class="text-center">Welkom op het Kinderslaapavontuur</h1>
-    
-    <div class="row mt-5">
-        <div class="col-md-6">
-            <h2>Laatst geslapen:</h2>
-            <p id="lastSleep">Zzz...</p>
-        </div>
-        <div class="col-md-6">
-            <h2>Volgende keer slapen:</h2>
-            <p id="nextSleep">Spannend!</p>
+        <h1 class="text-center">Welkom op het Kinderslaapavontuur</h1>
+        
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Laatst geslapen:</h2>
+                <p id="lastSleep">Zzz...</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Volgende keer slapen:</h2>
+                <p id="nextSleep">Spannend!</p>
+            </div>
         </div>
     </div>
 
