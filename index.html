@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinderslaapoverzicht</title>
+    <title>Kinderslaapavontuur</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #9ad3bc; /* Zachte groene kleur */
         }
         .container {
             background-color: #ffffff;
@@ -17,19 +17,38 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
         }
+        #parentLoginBtn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ffc107; /* Gele kleur */
+            border-color: #ffc107;
+        }
+        h1 {
+            color: #3f704d; /* Donkergroene tekstkleur */
+        }
+        h2 {
+            color: #3f704d; /* Donkergroene tekstkleur */
+        }
+        p {
+            color: #6d757c; /* Grijsblauwe tekstkleur */
+        }
     </style>
 </head>
 <body class="container mt-5 animated fadeIn">
-    <h1 class="text-center">Welkom op de Kinderpagina</h1>
+    <!-- Toegevoegde knop voor ouderlogin -->
+    <a href="admin_dashboard.html" class="btn btn-warning" id="parentLoginBtn">Ouder Login</a>
+
+    <h1 class="text-center">Welkom op het Kinderslaapavontuur</h1>
     
     <div class="row mt-5">
         <div class="col-md-6">
             <h2>Laatst geslapen:</h2>
-            <p id="lastSleep"></p>
+            <p id="lastSleep">Zzz...</p>
         </div>
         <div class="col-md-6">
             <h2>Volgende keer slapen:</h2>
-            <p id="nextSleep"></p>
+            <p id="nextSleep">Spannend!</p>
         </div>
     </div>
 
@@ -42,8 +61,8 @@
         var nextSleep = localStorage.getItem("nextSleep");
 
         // Vul de gegevens in op de kinderpagina
-        document.getElementById("lastSleep").innerHTML = lastSleep || "Nog geen gegevens";
-        document.getElementById("nextSleep").innerHTML = nextSleep || "Nog geen gegevens";
+        document.getElementById("lastSleep").innerHTML = lastSleep || "Zzz...";
+        document.getElementById("nextSleep").innerHTML = nextSleep || "Spannend!";
     </script>
 </body>
 </html>
