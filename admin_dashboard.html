@@ -76,9 +76,9 @@
 
         function saveToFile(lastSleep, nextSleep) {
             var accessToken = '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;
-            var repoOwner = 'colettebrawl';
-            var repoName = 'REPO_NAAM';
-            var filePath = 'path/naar/jouw/Storage.html';
+            var repoOwner = 'colettebrawl'; // Jouw GitHub-gebruikersnaam
+            var repoName = 'Logeren-Check'; // Naam van je repository
+            var filePath = 'Storage.html'; // Het pad naar het bestand in je repository
 
             // Haal huidige inhoud van het bestand op
             fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
