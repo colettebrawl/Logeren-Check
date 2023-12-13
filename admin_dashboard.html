@@ -21,7 +21,7 @@
 </head>
 <body class="container mt-5 animated fadeIn">
     <h1 class="text-center">Ouderinlog</h1>
-    <form id="loginForm" class="mt-5">
+    <form class="mt-5">
         <div class="form-group">
             <label for="username">Gebruikersnaam:</label>
             <input type="text" class="form-control" id="username" required>
@@ -51,18 +51,31 @@
             var password = document.getElementById("password").value;
 
             if ((username === "demelza" || username === "demelza") && password === "MartijN111") {
-                // Opslaan gegevens in lokale opslag
-                var lastSleep = document.getElementById("lastSleepInput").value;
-                var nextSleep = document.getElementById("nextSleepInput").value;
-
-                localStorage.setItem("lastSleep", lastSleep);
-                localStorage.setItem("nextSleep", nextSleep);
-
-                // Doorsturen naar kinderpagina
-                window.location.href = "index.html";
+                // Toon gegevensinvoerformulier en verberg inlogformulier
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("dataForm").style.display = "block";
             } else {
                 alert("Ongeldige inloggegevens. Probeer opnieuw.");
             }
+        }
+
+        function saveData() {
+            // Opslaan gegevens in lokale opslag
+            var lastSleep = document.getElementById("lastSleepInput").value;
+            var nextSleep = document.getElementById("nextSleepInput").value;
+
+            localStorage.setItem("lastSleep", lastSleep);
+            localStorage.setItem("nextSleep", nextSleep);
+
+            // Opgeslagen gegevens ook naar GitHub-bestand sturen
+            updateGitHubFile(lastSleep, nextSleep);
+
+            // Terug naar kinderpagina
+            window.location.href = "index.html";
+        }
+
+        function updateGitHubFile(lastSleep, nextSleep) {
+            // Voeg hier de code toe om het GitHub-bestand bij te werken
         }
     </script>
 </body>
